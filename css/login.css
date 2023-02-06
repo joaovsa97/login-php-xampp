@@ -1,6 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@1,100;1,300&display=swap");
 
-.alert {
+.alert-box {
+  padding: 8px;
+  background-color: #cc092f;
+  font-weight: bold;
+  border-radius: 10px;
+  color: white;
+  z-index: 99;
+  position: absolute;
+  word-wrap: break-word;
+}
+
+.info-box {
   padding: 8px;
   background-color: #cc092f;
   font-weight: bold;

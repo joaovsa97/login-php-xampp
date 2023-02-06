@@ -7,13 +7,25 @@ if(Isset($_POST['submit'])) {
     $name = mysqli_real_escape_string($conn, $_POST['name']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $user = mysqli_real_escape_string($conn, $_POST['user']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
-    $confpw = mysqli_real_escape_string($conn, $_POST['confpw']);
+    $password = mysqli_real_escape_string($conn, md5($_POST['password']));
+    $confpw = mysqli_real_escape_string($conn, md5($_POST['confpw']));
+    $code = mysqli_real_escape_string($conn, md5(rand()));
 
-    if($password === $confpw){
-
+    if(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE email={$email}")) > 0){
+        $msg = "<div class='alert-box>{$email} - This email has already been used.</div>"
     } else {
-        $msg = "<div class='alert'>Password and Confirm Password do not match</div>";
+        if($password === $confpw){
+            $sql = "INSERT INTO users (name, email, user, password, code) VALUES ('{$name}', '{$email}', '{$user}', '{$password}', '{$code}')";
+            $result = mysqli_query($conn, $sql);
+
+            if($result){
+                $msg = "<div class='info-box'>Registration Complete, please verify your e-mail to validate</div>"
+            } else {
+                $msg = "<div class='alert-box'>Something went wrong</div>"
+            }
+        } else {
+            $msg = "<div class='alert'>Password and Confirm Password do not match</div>";
+        }
     }
 }
 ?>
@@ -58,25 +70,19 @@ if(Isset($_POST['submit'])) {
                 <div class="registro">
                     <?php echo $msg ?>
                     <h1>Registro</h1>        
-                    <div style="margin: 10px; word-wrap: break-word"><span class="alert" style="padding: 8px;
-  background-color: #cc092f;
-  font-weight: bold;
-  border-radius: 10px;
-  color: white;
-  z-index: 99;
-  ">Password and Confirm Password do not match</span></div>            
+                    <div class="alert">Password and Confirm Password do not match</div>            
                     <!-- REGISTER FORM -->
                         <div class="textfield">
-                            <input type="text" name="name" placeholder="Nome Completo">
+                            <input type="text" name="name" placeholder="Nome Completo" value="<?php if (isset($_POST['submit'])) {echo $name;} ?>" required>
                         </div> 
                         <div class="textfield">
-                            <input type="email" name="email" placeholder="E-mail">
+                            <input type="email" name="email" placeholder="E-mail" value="<?php if (isset($_POST['submit'])) {echo $email;} ?>"required>
                             <br>
-                            <input type="text" name="user" placeholder="Nome De Usuário">
+                            <input type="text" name="user" placeholder="Nome De Usuário" value="<?php if (isset($_POST['submit'])) {echo $user;} ?>"required>
                             <br>
-                            <input type="password" name="password" placeholder="Senha">
+                            <input type="password" name="password" placeholder="Senha" required>
                             <br>
-                            <input type="password" name="confpw" placeholder="Confirmar Senha">
+                            <input type="password" name="confpw" placeholder="Confirmar Senha" required>
                             <button name="submit" type="submit" class="btn-cadastro">Cadastrar-se</button>
                             <a class="fechar return"><ion-icon name="arrow-back-circle-outline"></ion-icon></a>
                     </form>
