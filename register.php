@@ -1,7 +1,20 @@
 <!-- PHP SECTION -->
 <?php
+include 'config.php';
+$msg = "";
+
 if(Isset($_POST['submit'])) {
-    
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $user = mysqli_real_escape_string($conn, $_POST['user']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $confpw = mysqli_real_escape_string($conn, $_POST['confpw']);
+
+    if($password === $confpw){
+
+    } else {
+        $msg = "<div class='alert'>Password and Confirm Password do not match</div>";
+    }
 }
 ?>
 
@@ -34,32 +47,38 @@ if(Isset($_POST['submit'])) {
                    <div class="textfield">
                     <label for="senha">Senha</label>
                     <input type="password" name="senha" placeholder="Senha">
-                </div>
-                <button class="btn-login">Fazer Login</button>
-                <div class="cadastro">
-                    <p>Ainda não tem conta?<br>Cadastre-se e participe conosco!!</p>
-                    <button class="open btn-cadastro">Cadastre-se</button>
-                </div>
-                <a href="index.html" class="return"><ion-icon name="arrow-back-circle-outline"></ion-icon></a>
+                    </div>
+                    <button class="btn-login">Fazer Login</button>
+                    <div class="cadastro">
+                        <p>Ainda não tem conta?<br>Cadastre-se e participe conosco!!</p>
+                        <button class="open btn-cadastro">Cadastre-se</button>
+                    </div>
+                    <a href="index.html" class="return"><ion-icon name="arrow-back-circle-outline"></ion-icon></a>
                 </div>
                 <div class="registro">
-                    <h1>Cadastro</h1>
+                    <?php echo $msg ?>
+                    <h1>Registro</h1>        
+                    <div style="margin: 10px; word-wrap: break-word"><span class="alert" style="padding: 8px;
+  background-color: #cc092f;
+  font-weight: bold;
+  border-radius: 10px;
+  color: white;
+  z-index: 99;
+  ">Password and Confirm Password do not match</span></div>            
                     <!-- REGISTER FORM -->
-                    <form action="">
                         <div class="textfield">
-                            <input type="text" name="nome completo" placeholder="Nome Completo">
+                            <input type="text" name="name" placeholder="Nome Completo">
                         </div> 
                         <div class="textfield">
-                            <input type="password" name="e-mail" placeholder="E-mail">
+                            <input type="email" name="email" placeholder="E-mail">
                             <br>
-                            <input type="password" name="nome de usuario" placeholder="Nome De Usuário">
+                            <input type="text" name="user" placeholder="Nome De Usuário">
                             <br>
-                            <input type="password" name="senha" placeholder="Senha">
+                            <input type="password" name="password" placeholder="Senha">
                             <br>
-                            <input type="password" name="confirmar senha" placeholder="Confirmar Senha">
-                            <button name="submit" type="submit" class="close btn-cadastro">Cadastrar-se</button>
+                            <input type="password" name="confpw" placeholder="Confirmar Senha">
+                            <button name="submit" type="submit" class="btn-cadastro">Cadastrar-se</button>
                             <a class="fechar return"><ion-icon name="arrow-back-circle-outline"></ion-icon></a>
-                        </div>
                     </form>
                     <!-- END REGISTER FORM -->
                 </div> 
