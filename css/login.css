@@ -1,177 +1,199 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@1,100;1,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@1,100;1,300&display=swap");
 
-.main-login{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.alert-box {
+  padding: 8px;
+  background-color: #cc092f;
+  font-weight: bold;
+  border-radius: 10px;
+  color: white;
+  z-index: 99;
+  position: absolute;
+  word-wrap: break-word;
 }
 
-.left-login{
-    width: 50%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.info-box {
+  padding: 8px;
+  background-color: #cc092f;
+  font-weight: bold;
+  border-radius: 10px;
+  color: white;
+  z-index: 99;
+  position: absolute;
+  word-wrap: break-word;
 }
 
-.left-login > h1{
-    font-size: 2vw;
-    color: white;
+.main-login {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.left-login-image{
-    width: 30vw;
+.left-login {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.left-login > h1 {
+  font-size: 2vw;
+  color: white;
+}
+
+.left-login-image {
+  width: 30vw;
 }
 
 .right-login {
-    width: 50%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .card-login {
-    position: absolute;
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 30px 50px ;
-    background: rgb(255, 255, 255) ;
-    border-radius: 25px;
-    box-shadow: 0px 15px 35px #5454854a;
-    visibility: hidden;
+  position: absolute;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 50px;
+  background: rgb(255, 255, 255);
+  border-radius: 25px;
+  box-shadow: 0px 15px 35px #5454854a;
+  visibility: hidden;
 }
 
 .registro {
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 30px 50px ;
-    background: rgb(255, 255, 255) ;
-    border-radius: 25px;
-    box-shadow: 0px 15px 35px #5454854a;
-    visibility: hidden;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 50px;
+  background: rgb(255, 255, 255);
+  border-radius: 25px;
+  box-shadow: 0px 15px 35px #5454854a;
+  visibility: hidden;
 }
 
-.active{
-    visibility: visible;
-    z-index: 2;
-    opacity: 1;
+.active {
+  visibility: visible;
+  z-index: 2;
+  opacity: 1;
 }
 
-.card-login > h1{
-    color:  #cc092f ;
-    font-weight: 800;
-    margin: 0;
+.card-login > h1 {
+  color: #cc092f;
+  font-weight: 800;
+  margin: 0;
 }
-.card-login >h2 {
-    color:  #092b5a ;
-    font-weight: 800;
-    margin: 0;
-    cursor: pointer;
+.card-login > h2 {
+  color: #092b5a;
+  font-weight: 800;
+  margin: 0;
+  cursor: pointer;
 }
 
 .textfield {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    margin: 10px 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px 0px;
 }
 
-.textfield > input{
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    padding: 15px;
-    background: #514869;
-    color: aliceblue;
-    font-size: 12pt;
-    box-shadow: 0px 15px 35px #5454853c;
-    outline: none;
-    box-sizing: border-box;
+.textfield > input {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  background: #514869;
+  color: aliceblue;
+  font-size: 12pt;
+  box-shadow: 0px 15px 35px #5454853c;
+  outline: none;
+  box-sizing: border-box;
 }
 
 .textfield > label {
-    color: #092b5a ;
-    margin-bottom: 10px;
-    font-weight: bold;
+  color: #092b5a;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .textfield > input::placeholder {
-    color: #ffffff7c;
+  color: #ffffff7c;
 }
 
 .btn-login {
-    width: 100%;
-    padding: 16px 0px;
-    margin: 10px;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    text-transform: uppercase;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color:  #ffffff;
-    background: #cc092f;
-    cursor: pointer;
-    box-shadow: 0px 10px 40px -12px #e1ebdc72;
+  width: 100%;
+  padding: 16px 0px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #ffffff;
+  background: #cc092f;
+  cursor: pointer;
+  box-shadow: 0px 10px 40px -12px #e1ebdc72;
 }
 
-.cadastro p{
-    visibility: hidden;
+.cadastro p {
+  visibility: hidden;
 }
 
-.btn-cadastro{
-    border: none;
-    color:  #ffffff;
-    background: #cc092f;
-    width: 100%;
-    padding: 16px 0px;
-    margin: 15px 0px;
-    outline: none;
-    text-transform: uppercase;
-    font-weight: 800;
-    letter-spacing: 2px;
-    cursor: pointer;
-    border-radius: 10px;
+.btn-cadastro {
+  border: none;
+  color: #ffffff;
+  background: #cc092f;
+  width: 100%;
+  padding: 16px 0px;
+  margin: 15px 0px;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
-.return{
-    border: none;
-    color:  #ffffff;
-    font-size: 2em;
-    cursor: pointer;
+.return {
+  border: none;
+  color: #ffffff;
+  font-size: 2em;
+  cursor: pointer;
 }
 
-.return:hover ion-icon{
-    color: #cc092f;
+.return:hover ion-icon {
+  color: #cc092f;
 }
 
-@media screen and (max-width: 800px){
-    .main-login{
-        display: flex;
-        flex-direction: column;
-        padding: 10px 0;
-    }
+@media screen and (max-width: 800px) {
+  .main-login {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+  }
 
-    .left-login{
-        display: none;
-    }
+  .left-login {
+    display: none;
+  }
 
-    .cadastro p{
-        visibility: visible;
-        font-size: 0.8em;
-        margin-top: 10px;
-        text-align: center;
-    }
+  .cadastro p {
+    visibility: visible;
+    font-size: 0.8em;
+    margin-top: 10px;
+    text-align: center;
+  }
 }
