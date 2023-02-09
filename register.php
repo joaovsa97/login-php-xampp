@@ -7,8 +7,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-//Load Composer's autoloader
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 include 'config.php';
 $msg = "";
@@ -21,8 +20,8 @@ if(Isset($_POST['submit'])) {
     $confpw = mysqli_real_escape_string($conn, md5($_POST['confpw']));
     $code = mysqli_real_escape_string($conn, md5(rand()));
 
-    if(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE email={$email}")) > 0){
-        $msg = "<div class='alert-box>{$email} - This email has already been used.</div>"
+    if(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users WHERE email='{$email}'")) > 0){
+        $msg = "<div class='alert-box>{$email} - This email has already been used.</div>";
     } else {
         if($password === $confpw){
             $sql = "INSERT INTO users (name, email, user, password, code) VALUES ('{$name}', '{$email}', '{$user}', '{$password}', '{$code}')";
@@ -39,13 +38,13 @@ if(Isset($_POST['submit'])) {
                     $mail->isSMTP();                                            //Send using SMTP
                     $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
                     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                    $mail->Username   = '';                                     //SMTP username
-                    $mail->Password   = 'secret';                               //SMTP password
+                    $mail->Username   = 'zumbivirtual00@gmail.com';                                     //SMTP username
+                    $mail->Password   = 'codingprogamming/king';                               //SMTP password
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
                     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
                     //Recipients
-                    $mail->setFrom('', 'Mailer');
+                    $mail->setFrom('zumbivirtual00@gmail.com');
                     $mail->addAddress($email);
 
                     //Content
@@ -59,9 +58,9 @@ if(Isset($_POST['submit'])) {
                     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                 }
                 echo "</div>";
-                $msg = "<div class='info-box'>Registration Complete, please verify your e-mail to validate</div>"
+                $msg = "<div class='info-box'>Registration Complete, please verify your e-mail to validate</div>";
             } else {
-                $msg = "<div class='alert-box'>Something went wrong</div>"
+                $msg = "<div class='alert-box'>Something went wrong</div>";
             }
         } else {
             $msg = "<div class='alert'>Password and Confirm Password do not match</div>";
@@ -109,8 +108,8 @@ if(Isset($_POST['submit'])) {
                 </div>
                 <div class="registro">
                     <?php echo $msg ?>
-                    <h1>Registro</h1>        
-                    <div class="alert">Password and Confirm Password do not match</div>            
+                    <h1>Registro</h1>    
+                    <form method="POST">              
                     <!-- REGISTER FORM -->
                         <div class="textfield">
                             <input type="text" name="name" placeholder="Nome Completo" value="<?php if (isset($_POST['submit'])) {echo $name;} ?>" required>
